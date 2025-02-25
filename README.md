@@ -1,19 +1,28 @@
-markdown
-Copy
-# Solana Trading Tools Suite
+```markdown
+# Solana Trading Tools Suite  
+**Algorithmic trading infrastructure for Solana meme coins with portfolio tracking and risk management**
 
-## 📊 Backtest Strategies & Live Trading ([backteststrats.ipynb](https://github.com/jadenfix/solanatools/blob/main/backteststrats.ipynb))
-**Python Trading Infrastructure for Solana Meme Coins**
+[![Open in GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/jadenfix/solanatools)
 
-### Features
-- **Algorithmic Strategies**: RSI/Volume-based trading logic with parameter optimization
-- **Historical Analysis**: OHLCV data fetching from Helius API (1m-1h timeframes)
-- **Live Execution**: WebSocket integration for real-time order routing
-- **Portfolio Simulation**: Backtesting framework with commission modeling
-- **Wallet Integration**: Phantom wallet auth with FastAPI middleware
+## 📋 Table of Contents
+- [Backtesting Strategies](#-backtesting-strategies)
+- [Portfolio Tracker](#-portfolio-tracker)
+- [Trading Platform](#-trading-platform)
+- [Installation](#-installation)
+- [Data Pipeline](#-data-pipeline)
+- [License](#-license)
+
+---
+
+## 📊 Backtesting Strategies ([backteststrats.ipynb](https://github.com/jadenfix/solanatools/blob/main/backteststrats.ipynb))
+
+### Key Features
+- **RSI/Volume Strategies**: Mean-reversion logic with dynamic threshold tuning
+- **Multi-Timeframe Analysis**: 1-minute to 1-hour OHLCV aggregation
+- **Parameter Optimization**: Grid search for strategy hyperparameters
+- **Commission Modeling**: Realistic fee simulation (0.1-0.3% per trade)
 
 ```python
-# Core Components
 class MemeCoinStrategy(Strategy):
     """RSI-based strategy with volume filtering"""
     def init(self):
@@ -25,71 +34,95 @@ class MemeCoinStrategy(Strategy):
             self.buy()
         elif self.rsi[-1] > 70:
             self.sell()
-Tech Stack
-backtesting.py · pandas · websockets · FastAPI · solana-py
+```
 
-Setup
-bash
-Copy
-pip install solana-py==0.30.2 anchorpy==0.17.1 backtesting==0.3.3 websockets==12.0
-export HELIUS_API_KEY="your_api_key"
-📈 Solana Portfolio Tracker (solana_portfolio)
-Real-time Asset Monitoring & Performance Analytics
+### Tech Stack
+| Component          | Technologies                             |
+|--------------------|------------------------------------------|
+| Data Fetching      | Helius API, pandas, aiohttp             |
+| Backtesting        | backtesting.py, numpy                    |
+| Live Execution     | websockets, solana-py                    |
+| Auth               | FastAPI, Phantom Wallet Integration      |
 
-Features
-Multi-wallet balance aggregation
+---
 
-Token-level P&L tracking
+## 📈 Portfolio Tracker ([solana_portfolio](https://github.com/jadenfix/solanatools/tree/main/solanatools/solana_portfolio))
 
-Transaction history analysis
+### Features
+- Multi-wallet balance aggregation
+- Historical P&L analysis
+- Token allocation breakdowns
+- Risk-adjusted performance metrics
 
-Interactive web dashboard
-
-Tech Stack
-FastAPI · uvicorn · pandas · solana.rpc
-
-Usage
-python
-Copy
+```python
 async def get_balance(self) -> Optional[float]:
-    """Get wallet SOL balance with lamports conversion"""
+    """Get SOL balance with lamports conversion"""
     balance = await self.connection.get_balance(self.public_key)
-    return balance.value / 1e9
-💹 Solana Trading Platform (solana_trading_platform)
-Institutional-Grade Trading Infrastructure
+    return balance.value / 1e9  # Convert lamports to SOL
+```
 
-Features
-Limit/Market order types
+### Tech Stack
+- **Web Framework**: FastAPI, uvicorn
+- **Data**: pandas, numpy
+- **Blockchain**: solana-py, solders
 
-Batch transaction processing
+---
 
-Slippage control
+## 💹 Trading Platform ([solana_trading_platform](https://github.com/jadenfix/solanatools/tree/main/solanatools/solana_trading_platform))
 
-Risk management engine
+### Features
+- Limit/Market/Stop orders
+- Batch transaction processing
+- Slippage control (0.1-5%)
+- Volatility-based circuit breakers
 
-Tech Stack
-anchorpy · aiohttp · numpy · websockets
-
-Order Execution
-python
-Copy
+```python
 async def sign_and_send_transaction(self, transaction: Transaction):
-    """Atomic transaction signing with blockhash management"""
+    """Atomic transaction signing"""
     recent_blockhash = await self.connection.get_latest_blockhash()
     transaction.recent_blockhash = recent_blockhash.value.blockhash
     # Implement signing logic
-🛠 Installation
-bash
-Copy
+```
+
+### Tech Stack
+- **Smart Contracts**: anchorpy
+- **Async IO**: aiohttp, asyncio
+- **Numerics**: numpy
+
+---
+
+## 🛠 Installation
+
+1. Clone repository:
+```bash
 git clone https://github.com/jadenfix/solanatools
 cd solanatools
-python -m pip install -r requirements.txt
-📈 Data Pipeline Architecture
-mermaid
-Copy
-graph LR
-A[Helius API] --> B{WebSocket}
-B --> C[Data Lake]
-C --> D[Feature Engineering]
-D --> E[Strategy Backtesting]
-E --> F[Live Execution]
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Set environment variables:
+```bash
+echo "HELIUS_API_KEY=your_api_key_here" > .env
+```
+
+---
+
+## 📜 Data Pipeline
+
+```mermaid
+graph TD
+    A[Helius WebSocket] --> B{Data Validator}
+    B --> C[Raw Data Lake]
+    C --> D[Feature Engineering]
+    D --> E[Strategy Backtester]
+    E --> F[Optimization Engine]
+    F --> G[Live Trading API]
+    G --> H[Solana Blockchain]
+```
+
+---
+
