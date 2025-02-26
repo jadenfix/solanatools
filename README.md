@@ -113,7 +113,7 @@ pip install -r requirements.txt
 cp .env.example .env
 
 Architecture Overview
-
+```
 graph TD
     A[Blockchain Data] --> B{Portfolio Tracker}
     B --> C[Risk Models]
@@ -121,7 +121,7 @@ graph TD
     D --> E[Backtesting Engine]
     E --> F[Execution API]
     F --> G[Solana Network]
-
+```
 Why I’m Proud of the Solana Trading Bot
 
 While I continue to explore various projects on the Solana blockchain, the Solana Trading Bot remains the project I am most passionate about. It embodies years of learning in algorithmic trading and blockchain technology. Its automated, modular design and comprehensive risk management make it a project I am proud to share with the community.
