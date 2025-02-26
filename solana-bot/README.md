@@ -1,3 +1,5 @@
+Below is an updated version of the README that uses a fenced code block for the project structure. This should preserve the tree formatting when you copy and paste it into your file.
+
 # Solana Trading Bot
 
 I am most proud of this project. The **Solana Trading Bot** is a production-grade, fully automated trading system built specifically for the Solana blockchain. It seamlessly integrates every aspect of algorithmic trading—from data ingestion and strategy execution to risk management and real-time monitoring—all while leveraging Solana's high-performance network.
@@ -15,14 +17,15 @@ The Solana Trading Bot automates every facet of the trading process, including:
 
 ## Project Structure
 
+```plaintext
 solana-bot/
 ├── config/
-│   ├── init.py         # Package initialization
+│   ├── __init__.py         # Package initialization
 │   ├── chains.py           # Network configurations
 │   └── assets.py           # Token configurations
 ├── core/
 │   ├── engine/
-│   │   ├── init.py     # Package initialization
+│   │   ├── __init__.py     # Package initialization
 │   │   ├── execution.py    # Order execution and MEV protection
 │   │   └── risk.py         # Risk management strategies
 │   ├── data/
@@ -55,25 +58,22 @@ solana-bot/
 ├── Dockerfile              # Containerization configuration
 └── README.md               # This file
 
-## Key Features
+Key Features
+	•	End-to-End Automation: From data collection and strategy evaluation to secure order execution.
+	•	Modular Architecture: Easily extend or modify components (strategies, risk controls, monitoring).
+	•	MEV Protection: Integrated Jito support to safeguard transactions against MEV attacks.
+	•	Robust Risk Management: Dynamic risk evaluation, including stop-loss and take-profit logic.
+	•	Real-Time Monitoring: Built-in Prometheus metrics and alerting to track performance and health.
+	•	Seamless Backtesting & Live Trading: Switch between historical backtesting and live market execution.
 
-- **End-to-End Automation:** From data collection and strategy evaluation to secure order execution.
-- **Modular Architecture:** Easily extend or modify components (strategies, risk controls, monitoring).
-- **MEV Protection:** Integrated Jito support to safeguard transactions against MEV attacks.
-- **Robust Risk Management:** Dynamic risk evaluation, including stop-loss and take-profit logic.
-- **Real-Time Monitoring:** Built-in Prometheus metrics and alerting to track performance and health.
-- **Seamless Backtesting & Live Trading:** Switch between historical backtesting and live market execution.
+Installation
 
-## Installation
+Prerequisites
+	•	Docker (or Python 3.9+ for local development)
+	•	Git
 
-### Prerequisites
+Clone the Repository
 
-- [Docker](https://www.docker.com/) (or Python 3.9+ for local development)
-- [Git](https://git-scm.com/)
-
-### Clone the Repository
-
-```bash
 git clone https://github.com/jadenfix/solanatools.git
 cd solanatools/solana-bot
 
@@ -122,4 +122,4 @@ License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-You can now copy and paste this entire block into your `README.md` file on GitHub. Enjoy showcasing your project!
+Simply copy and paste this content into your `README.md` file on GitHub. The project structure is now enclosed in a fenced code block with a "plaintext" label to preserve formatting. Enjoy showcasing your project!
