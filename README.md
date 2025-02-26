@@ -2,8 +2,6 @@
 
 **Algorithmic Trading Infrastructure for Solana Cryptocurrencies**
 
-[![GitHub](https://img.shields.io/badge/Repo-JadenFix/solanatools-181717?style=flat&logo=github)](https://github.com/jadenfix/solanatools)
-
 ---
 
 ## Overview
