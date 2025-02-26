@@ -113,7 +113,7 @@ pip install -r requirements.txt
 cp .env.example .env
 
 Architecture Overview
-```
+```mermaid
 graph TD
     A[Blockchain Data] --> B{Portfolio Tracker}
     B --> C[Risk Models]
