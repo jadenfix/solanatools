@@ -1,5 +1,5 @@
 
-```markdown
+
 # Solana Trading Tools Suite
 **Algorithmic Trading Infrastructure for Solana Meme Coins**
 
