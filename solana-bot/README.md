@@ -57,7 +57,7 @@ solana-bot/
 ├── requirements.txt        # Python dependencies
 ├── Dockerfile              # Containerization configuration
 └── README.md               # This file
-
+```
 Key Features
 	•	End-to-End Automation: From data collection and strategy evaluation to secure order execution.
 	•	Modular Architecture: Easily extend or modify components (strategies, risk controls, monitoring).
