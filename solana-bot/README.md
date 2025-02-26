@@ -1,5 +1,3 @@
-Below is an updated version of the README that uses a fenced code block for the project structure. This should preserve the tree formatting when you copy and paste it into your file.
-
 # Solana Trading Bot
 
 I am most proud of this project. The **Solana Trading Bot** is a production-grade, fully automated trading system built specifically for the Solana blockchain. It seamlessly integrates every aspect of algorithmic trading—from data ingestion and strategy execution to risk management and real-time monitoring—all while leveraging Solana's high-performance network.
@@ -121,5 +119,3 @@ Contributions, feedback, and suggestions are welcome! Please open an issue or su
 License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-Simply copy and paste this content into your `README.md` file on GitHub. The project structure is now enclosed in a fenced code block with a "plaintext" label to preserve formatting. Enjoy showcasing your project!
