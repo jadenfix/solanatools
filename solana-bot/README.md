@@ -1,5 +1,3 @@
-Below is the complete Markdown content you can copy and paste directly into your README.md file:
-
 # Solana Trading Bot
 
 I am most proud of this project. The **Solana Trading Bot** is a production-grade, fully automated trading system built specifically for the Solana blockchain. It seamlessly integrates every aspect of algorithmic trading—from data ingestion and strategy execution to risk management and real-time monitoring—all while leveraging Solana's high-performance network.
@@ -19,43 +17,43 @@ The Solana Trading Bot automates every facet of the trading process, including:
 
 solana-bot/
 ├── config/
-│   ├── init.py
-│   ├── chains.py        # Network configurations
-│   └── assets.py        # Token configurations
+│   ├── init.py         # Package initialization
+│   ├── chains.py           # Network configurations
+│   └── assets.py           # Token configurations
 ├── core/
 │   ├── engine/
-│   │   ├── init.py
-│   │   ├── execution.py   # Order execution and MEV protection
-│   │   └── risk.py        # Risk management strategies
+│   │   ├── init.py     # Package initialization
+│   │   ├── execution.py    # Order execution and MEV protection
+│   │   └── risk.py         # Risk management strategies
 │   ├── data/
-│   │   ├── historical.py  # Historical market data ingestion
-│   │   └── realtime.py    # Real-time data stream handling
+│   │   ├── historical.py   # Historical market data ingestion
+│   │   └── realtime.py     # Real-time data stream handling
 │   └── strategies/
-│       ├── base.py        # Base strategy interface
-│       └── rsi_momentum.py# Example RSI-based strategy
+│       ├── base.py         # Base strategy interface
+│       └── rsi_momentum.py # Example RSI-based strategy
 ├── infrastructure/
 │   ├── clients/
-│   │   ├── solana.py      # Enhanced Solana RPC client
-│   │   └── jito.py        # Jito MEV protection integration
+│   │   ├── solana.py       # Enhanced Solana RPC client
+│   │   └── jito.py         # Jito MEV protection integration
 │   ├── wallet/
-│   │   ├── manager.py     # Wallet management and key handling
-│   │   └── signer.py      # Transaction building with priority fees
+│   │   ├── manager.py      # Wallet management and key handling
+│   │   └── signer.py       # Transaction building with priority fees
 │   └── monitoring/
-│       ├── metrics.py     # Prometheus metrics exporter
-│       └── alerts.py      # Alerting via webhook or email
+│       ├── metrics.py      # Prometheus metrics exporter
+│       └── alerts.py       # Alerting via webhook or email
 ├── tests/
-│   ├── unit/              # Unit tests
-│   └── integration/       # Integration tests
+│   ├── unit/               # Unit tests
+│   └── integration/        # Integration tests
 ├── scripts/
-│   ├── deploy.py          # Deployment script
-│   └── healthcheck.py     # System health check
+│   ├── deploy.py           # Deployment script
+│   └── healthcheck.py      # System health check
 ├── utils/
-│   ├── math.py            # Utility functions (e.g., calculations)
-│   └── time.py            # Time utility functions
-├── main.py                # Entry point for live trading/backtesting
-├── requirements.txt       # Python dependencies
-├── Dockerfile             # Containerization configuration
-└── README.md              # This file
+│   ├── math.py             # Utility functions (e.g., calculations)
+│   └── time.py             # Time utility functions
+├── main.py                 # Entry point for live trading/backtesting
+├── requirements.txt        # Python dependencies
+├── Dockerfile              # Containerization configuration
+└── README.md               # This file
 
 ## Key Features
 
@@ -69,6 +67,7 @@ solana-bot/
 ## Installation
 
 ### Prerequisites
+
 - [Docker](https://www.docker.com/) (or Python 3.9+ for local development)
 - [Git](https://git-scm.com/)
 
@@ -123,4 +122,4 @@ License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-This markdown is fully formatted and ready to be used in your repository. Enjoy showcasing your project!
+You can now copy and paste this entire block into your `README.md` file on GitHub. Enjoy showcasing your project!
