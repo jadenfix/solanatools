@@ -1,0 +1,8 @@
+solana
+solders
+backtesting
+numpy
+pandas
+pytest
+prometheus_client
+requests
