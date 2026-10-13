@@ -87,6 +87,11 @@ def handler(db):
 
         def do_GET(self):
             path = urlparse(self.path).path
+            if path == '/favicon.ico':
+                self.send_response(204)
+                self.send_header('Cache-Control', 'public, max-age=86400')
+                self.end_headers()
+                return
             if path == '/api/health':
                 return self.send(200, {'ok': True, 'mode': 'offline-paper'})
             if path == '/api/runs':

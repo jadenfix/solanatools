@@ -7,6 +7,16 @@
 The bot now has a fully offline RSI replay with exposure limits, fees, exits,
 a fill ledger, and an equity curve:
 
+![Actual offline paper replay workflow](solana-bot/docs/demo/offline-paper-workbench.gif)
+
+[Watch the 960×540 MP4](solana-bot/docs/demo/offline-paper-workbench.mp4) ·
+[Inspect the source/media receipt](solana-bot/docs/demo/capture.json)
+
+The 23-second capture is an actual browser run of the checked-in workbench. It
+shows the bundled synthetic replay, a parameter change, a visibly unverified
+CSV upload, charts, fills, fees, and local SQLite history. It does not use or
+claim a live Solana feed, wallet, RPC, Jito, order, profit, or deployment.
+
 ```sh
 cd solana-bot
 python main.py --demo --output artifacts/replay.json
