@@ -1,6 +1,21 @@
 # Solana Trading Tools Suite
 
-**Algorithmic Trading Infrastructure for Solana Cryptocurrencies**
+**Solana strategy research and offline paper replay**
+
+## Verified local entrypoint
+
+The bot now has a fully offline RSI replay with exposure limits, fees, exits,
+a fill ledger, and an equity curve:
+
+```sh
+cd solana-bot
+python main.py --demo --output artifacts/replay.json
+python -m pytest -q tests/unit tests/integration
+```
+
+The bundled price series is synthetic. Live RPC/Jito execution and the broader
+portfolio/platform trees remain incomplete research scaffolds; the overview
+below describes their intended architecture, not verified production support.
 
 ---
 
