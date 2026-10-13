@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "generated_at": "2026-10-13T10:45:53.196909+00:00",
+  "source_commit": "53e97917d880dcc98095fbf56f768b5c82830ee6",
+  "source_tree": "57f111788ed4a3777be95201b182138b8ae7da49",
+  "source_blobs": {
+    "solana-bot/main.py": "0edec78fd79fcddfa4014d75429464ea0060afc9",
+    "solana-bot/replay_web.py": "15751659507743f0bb7ef7a1a926e5bbbb87b711",
+    "solana-bot/core/engine/paper.py": "bc9af0b7423803d9f784c04327850a595ee77435",
+    "solana-bot/core/strategies/base.py": "2a84f9a046195df40f44216c82940f407d30cdea",
+    "solana-bot/core/strategies/rsi_momentum.py": "9b0e408058ef05fd0297aced77353abc72cf5a79",
+    "solana-bot/fixtures/synthetic_prices.csv": "e2327c7d9146cac370c62d50a28112cbe501828a",
+    "solana-bot/web/index.html": "8cbc2a9ae9caacb306e126a8b37fdf53d785ceb5",
+    "solana-bot/web/workbench.css": "e94a268f633cfbfe38fc37e7027b17d719e0c5c0",
+    "solana-bot/web/workbench.js": "2cc7fb596c820684368c8b5498fc82cb7d9c83e5",
+    "solana-bot/tests/unit/test_paper.py": "e9bc1f35a3c23506c96ed109975c9793525f2ee6",
+    "solana-bot/tests/integration/test_web_replay.py": "80e98257631d7122b6cf33762bf1150eb66c35b9",
+    "solana-bot/browser-tests/e2e.mjs": "0f455322939947ecdaba7d55341fd67f7ed66703",
+    "solana-bot/browser-tests/capture.mjs": "def109c24041e70fb2fff3c561092e6bf41d6c7c",
+    "solana-bot/browser-tests/package.json": "63aef6b5d40ff10dd0032fe51d226b1b90a8ac45",
+    "solana-bot/browser-tests/package-lock.json": "09063b9a1a79922e3b063048002c1ba68f8bfc15",
+    "solana-bot/scripts/generate_demo.sh": "9b13c58605531cec92cafae916415861ae1e10cc",
+    "solana-bot/scripts/build_demo_receipt.py": "43e0ceb2c4a002772f4585f59186c88913b5aedd",
+    "solana-bot/scripts/verify_demo_media.py": "cc69bb595feeb8002dc858f07f73e768b414ec7e"
+  },
+  "artifacts": {
+    "solana-bot/docs/demo/offline-paper-workbench.gif": {
+      "sha256": "762e475b9c62397635c3c993549573d7a39b4d6e428179a6c620472c7a476ef1",
+      "bytes": 710905,
+      "codec": "gif",
+      "width": 420,
+      "height": 236,
+      "duration_seconds": 22.66,
+      "frames": 68
+    },
+    "solana-bot/docs/demo/offline-paper-workbench.mp4": {
+      "sha256": "d20352a4a55c884d9d7d3567d84c8c5dd13f2536125fb83d807cc3717b9426dc",
+      "bytes": 511650,
+      "codec": "h264",
+      "width": 960,
+      "height": 540,
+      "duration_seconds": 22.708,
+      "frames": 545
+    },
+    "solana-bot/docs/demo/poster.png": {
+      "sha256": "cf62f9311888d58d33d60eb70f10f180459440786b4252f1086ff4dd2318dc2f",
+      "bytes": 238587,
+      "codec": "png",
+      "width": 960,
+      "height": 540,
+      "duration_seconds": null,
+      "frames": null
+    }
+  },
+  "observed_workflow": {
+    "mode": "offline-paper",
+    "data": "bundled synthetic fixture plus explicitly unverified uploaded fixture CSV",
+    "synthetic_bars": 75,
+    "synthetic_fills": 9,
+    "interactions": [
+      "run and persist replay",
+      "inspect equity, RSI, fees, drawdown, and fill ledger",
+      "change RSI period and fee parameters",
+      "upload local CSV with unverified provenance"
+    ]
+  },
+  "limitations": [
+    "No live Solana RPC, wallet, Jito, order, or market-data call.",
+    "No profitability, strategy quality, latency, liquidity, or deployment claim.",
+    "Uploaded CSV provenance is unverified; bundled prices are synthetic."
+  ]
+}
