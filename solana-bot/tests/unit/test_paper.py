@@ -1,5 +1,8 @@
 import math
+import os
+from pathlib import Path
 import pytest
+import main as main_module
 from core.engine.paper import PaperExecutionEngine
 from core.strategies.rsi_momentum import RSIMomentumStrategy
 from main import main
@@ -59,3 +62,68 @@ def test_bad_csv_fails_without_silent_success(tmp_path):
     with pytest.raises(SystemExit) as error:
         main(["--csv", str(path)])
     assert error.value.code == 2
+
+
+def test_output_cannot_overwrite_input_csv(tmp_path):
+    source = tmp_path / "prices.csv"
+    original = b"timestamp,price\nt0,10\nt1,9\n"
+    source.write_bytes(original)
+    with pytest.raises(SystemExit) as error:
+        main(["--csv", str(source), "--period", "1", "--output", str(source)])
+    assert error.value.code == 2
+    assert source.read_bytes() == original
+
+
+@pytest.mark.parametrize("alias_kind", ["symlink", "hardlink"])
+def test_output_alias_cannot_overwrite_input_csv(tmp_path, alias_kind):
+    source = tmp_path / "prices.csv"
+    alias = tmp_path / "result.json"
+    original = b"timestamp,price\nt0,10\nt1,9\n"
+    source.write_bytes(original)
+    try:
+        if alias_kind == "symlink":
+            alias.symlink_to(source)
+        else:
+            os.link(source, alias)
+    except (NotImplementedError, OSError) as error:
+        pytest.skip(f"{alias_kind} unavailable: {error}")
+    with pytest.raises(SystemExit) as error:
+        main(["--csv", str(source), "--period", "1", "--output", str(alias)])
+    assert error.value.code == 2
+    assert source.read_bytes() == original
+
+
+@pytest.mark.parametrize("alias_kind", ["exact", "symlink", "hardlink"])
+def test_demo_output_cannot_overwrite_bundled_fixture(tmp_path, monkeypatch, alias_kind):
+    fixture = tmp_path / "fixtures" / "synthetic_prices.csv"
+    fixture.parent.mkdir()
+    original = (Path(main_module.__file__).parent / "fixtures" / "synthetic_prices.csv").read_bytes()
+    fixture.write_bytes(original)
+    monkeypatch.setattr(main_module, "__file__", str(tmp_path / "main.py"))
+    output = fixture if alias_kind == "exact" else tmp_path / "replay.json"
+    try:
+        if alias_kind == "symlink":
+            output.symlink_to(fixture)
+        elif alias_kind == "hardlink":
+            os.link(fixture, output)
+    except (NotImplementedError, OSError) as error:
+        pytest.skip(f"{alias_kind} unavailable: {error}")
+    with pytest.raises(SystemExit) as error:
+        main_module.main(["--demo", "--output", str(output)])
+    assert error.value.code == 2
+    assert fixture.read_bytes() == original
+
+
+def test_failed_atomic_replace_preserves_existing_output(tmp_path, monkeypatch):
+    output = tmp_path / "replay.json"
+    output.write_text("previous output\n")
+
+    def fail_replace(_source, _target):
+        raise OSError("simulated replace failure")
+
+    monkeypatch.setattr("main.os.replace", fail_replace)
+    with pytest.raises(SystemExit) as error:
+        main(["--demo", "--output", str(output)])
+    assert error.value.code == 2
+    assert output.read_text() == "previous output\n"
+    assert list(tmp_path.glob(".replay.json.*.tmp")) == []

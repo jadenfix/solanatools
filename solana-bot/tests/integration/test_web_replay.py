@@ -70,5 +70,7 @@ class WebReplay(unittest.TestCase):
         for path,mime in [('/','text/html'),('/workbench.js','text/javascript'),('/workbench.css','text/css')]:
             with urllib.request.urlopen(self.url+path) as r:
                 self.assertIn(mime,r.headers['Content-Type']);self.assertIn("script-src 'self'",r.headers['Content-Security-Policy'])
+        with urllib.request.urlopen(self.url+'/favicon.ico') as response:
+            self.assertEqual(response.status,204);self.assertEqual(response.read(),b'')
 
 if __name__=='__main__':unittest.main()

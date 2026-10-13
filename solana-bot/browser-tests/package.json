@@ -1,0 +1,14 @@
+{
+  "name": "solana-paper-replay-browser-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Actual-browser end-to-end coverage for the offline paper replay workbench",
+  "type": "module",
+  "scripts": {
+    "test": "node e2e.mjs",
+    "capture": "node capture.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.55.1"
+  }
+}
